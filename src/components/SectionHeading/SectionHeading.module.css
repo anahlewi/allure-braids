@@ -1,0 +1,9 @@
+.heading {
+  display: grid;
+  gap: 18px;
+  margin-bottom: clamp(40px, 6vw, 80px);
+}
+
+.title {
+  font-size: clamp(2.6rem, 8vw, 6.5rem);
+}

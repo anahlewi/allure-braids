@@ -1,0 +1,83 @@
+.grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.cell { perspective: 1000px; }
+
+.card {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  text-align: center;
+  color: #fff;
+  transform-style: preserve-3d;
+}
+
+.media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20, 16, 14, 0.5), rgba(20, 16, 14, 0.85));
+  pointer-events: none;
+}
+
+.number {
+  position: absolute;
+  top: 16px;
+  left: 18px;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  opacity: 0.75;
+}
+
+.titleWrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  pointer-events: none;
+}
+
+.title {
+  display: inline-block;
+  font-size: clamp(1.05rem, 1.6vw, 1.45rem);
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  max-width: 12ch;
+}
+
+.meta {
+  position: absolute;
+  bottom: 20px;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 640px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .grid { grid-template-columns: repeat(3, 1fr); gap: clamp(24px, 4vw, 76px); row-gap: clamp(24px, 3vw, 48px); }
+}
+
+/* Touch devices have no hover, so always show the meta line. */
+@media (hover: none) {
+  .meta { opacity: 1 !important; transform: none !important; }
+}

@@ -1,0 +1,16 @@
+.list {
+  --social-inner: var(--color-bg);
+  display: flex;
+  gap: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.link {
+  display: block;
+  width: 44px;
+  height: 44px;
+}
+
+.link svg { width: 100%; height: 100%; }

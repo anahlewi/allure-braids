@@ -1,0 +1,109 @@
+.hero {
+  position: relative;
+  padding-top: calc(var(--header-h) + 24px);
+  padding-bottom: 72px;
+}
+
+/* Mobile: title, byline, wide image, then two side-by-side images. */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    'title title'
+    'byline byline'
+    'b b'
+    'a c'
+    'social social';
+  gap: 16px;
+}
+
+.title {
+  grid-area: title;
+  font-size: clamp(3.6rem, 17vw, 8.2rem);
+  line-height: 0.88;
+  display: flex;
+  flex-direction: column;
+}
+
+.line { display: block; }
+
+.byline {
+  grid-area: byline;
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-bottom: 8px;
+}
+
+.figure { min-width: 0; }
+
+.frame {
+  height: 100%;
+  overflow: hidden;
+}
+
+.figure:nth-of-type(1) .frame,
+.figure:nth-of-type(3) .frame { aspect-ratio: 3 / 4; }
+.figure:nth-of-type(2) .frame { aspect-ratio: 4 / 5; }
+
+.socials {
+  grid-area: social;
+  justify-self: end;
+  margin-top: 16px;
+}
+
+.scrollCue {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .hero {
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+  }
+
+  .grid {
+    grid-template-columns: 1fr 1.17fr 1.07fr;
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-areas:
+      'title b byline'
+      'title b c'
+      'a b c'
+      '. . social';
+    column-gap: clamp(20px, 2vw, 40px);
+    row-gap: 24px;
+  }
+
+  .title { align-self: end; font-size: clamp(4rem, 6.4vw, 7.6rem); }
+
+  .byline { align-self: end; margin: 0; font-size: clamp(1rem, 1.5vw, 1.6rem); }
+
+  .figure:nth-of-type(1) { align-self: end; }
+  .figure:nth-of-type(1) .frame { aspect-ratio: 9 / 10; }
+  .figure:nth-of-type(2) .frame { aspect-ratio: auto; min-height: 100%; height: clamp(520px, 40vw, 760px); }
+  .figure:nth-of-type(3) { align-self: end; }
+  .figure:nth-of-type(3) .frame { aspect-ratio: 4 / 5; }
+
+  .socials { margin-top: 0; }
+
+  .scrollCue {
+    position: absolute;
+    left: var(--gutter);
+    bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-muted);
+  }
+
+  .cueLine {
+    display: block;
+    width: 1px;
+    height: 40px;
+    background: currentColor;
+  }
+}
